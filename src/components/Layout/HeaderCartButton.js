@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react';
 
-import CartIcon from "../Cart/CartIcon";
-import CartContext from "../../context/cart-context";
+import CartIcon from '../Cart/CartIcon';
+import CartContext from '../../context/cart-context';
 
-import classes from "./HeaderCartButton.module.css";
+import classes from './HeaderCartButton.module.css';
 
-const HeaderCartButton = (props) => {
+const HeaderCartButton = props => {
   const [btnBump, setBtnBump] = useState(false);
   const cartCTX = useContext(CartContext);
 
   // prettier-ignore
   const numberOfCartItems = cartCTX.items.reduce((cur, item) => cur + item.amount, 0);
 
-  const btnClasses = `${classes.button} ${btnBump ? classes.bump : ""}`;
+  const btnClasses = `${classes.button} ${btnBump ? classes.bump : ''}`;
 
   useEffect(() => {
     // Guard Clause
