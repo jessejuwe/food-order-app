@@ -1,13 +1,13 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import CartItem from "./CartItem";
-import Modal from "../UI/Modal";
+import CartItem from './CartItem';
+import Modal from '../UI/Modal';
 
-import CartContext from "../../context/cart-context";
+import CartContext from '../../context/cart-context';
 
-import classes from "./Cart.module.css";
+import classes from './Cart.module.css';
 
-const Cart = (props) => {
+const Cart = props => {
   const cartCTX = useContext(CartContext);
 
   const totalAmount = cartCTX.totalAmount.toFixed(2);
@@ -16,17 +16,17 @@ const Cart = (props) => {
     // prettier-ignore
     new Intl.NumberFormat(locale, { style: "currency", currency }).format(value);
 
-  const formatedAmount = `${formatCur(totalAmount, navigator.language, "GBP")}`;
+  const formatedAmount = `${formatCur(totalAmount, navigator.language, 'GBP')}`;
 
   const hasItems = cartCTX.items.length > 0;
 
-  const addItemHandler = (item) => cartCTX.addItem({ ...item, amount: 1 });
+  const addItemHandler = item => cartCTX.addItem({ ...item, amount: 1 });
 
-  const removeItemHandler = (id) => cartCTX.removeItem(id);
+  const removeItemHandler = id => cartCTX.removeItem(id);
 
   const cartItems = (
-    <ul className={classes["cart-items"]}>
-      {cartCTX.items.map((item) => (
+    <ul className={classes['cart-items']}>
+      {cartCTX.items.map(item => (
         <CartItem
           key={item.id}
           name={item.name}
@@ -47,7 +47,7 @@ const Cart = (props) => {
         <span>{formatedAmount}</span>
       </div>
       <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.onCloseCart}>
+        <button className={classes['button--alt']} onClick={props.onCloseCart}>
           Close
         </button>
         {hasItems && <button className={classes.button}>Order</button>}

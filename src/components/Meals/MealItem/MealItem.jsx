@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import CartContext from "../../../context/cart-context";
+import { useContext } from 'react';
+import CartContext from '../../../context/cart-context';
 
-import MealItemForm from "./MealItemForm";
+import MealItemForm from './MealItemForm';
 
-import classes from "./MealItem.module.css";
+import classes from './MealItem.module.css';
 
-const MealItem = (props) => {
+const MealItem = props => {
   const cartCTX = useContext(CartContext);
 
   const formatCur = (value, locale, currency) =>
@@ -13,9 +13,9 @@ const MealItem = (props) => {
     new Intl.NumberFormat(locale, { style: "currency", currency }).format(value);
 
   const price = `${props.price.toFixed(2)}`;
-  const formatedPrice = `${formatCur(price, navigator.language, "GBP")}`;
+  const formatedPrice = `${formatCur(price, navigator.language, 'GBP')}`;
 
-  const addToCartHandler = (amount) =>
+  const addToCartHandler = amount =>
     // prettier-ignore
     cartCTX.addItem({ id: props.id, name: props.name, amount, price: props.price });
 

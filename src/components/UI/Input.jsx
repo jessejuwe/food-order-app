@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import classes from "./Input.module.css";
+import classes from './Input.module.css';
 
 // Using React.forwardRef() to receive ref value, instead of two-way binding
 const Input = React.forwardRef((props, ref) => {
