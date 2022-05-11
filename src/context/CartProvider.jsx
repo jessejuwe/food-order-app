@@ -1,13 +1,13 @@
-import React, { useReducer } from "react";
+import React, { useReducer } from 'react';
 
-import CartContext from "./cart-context";
+import CartContext from './cart-context';
 
 // Default Cart State
 const defaultCartState = { items: [], totalAmount: 0 };
 
 // Cart Reducer function, logic for validation
 const cartReducer = (state, action) => {
-  if (action.type === "ADD_ITEM") {
+  if (action.type === 'ADD_ITEM') {
     // prettier-ignore
     const updatedTotalAmount = state.totalAmount + (action.item.price * action.item.amount);
 
@@ -31,7 +31,7 @@ const cartReducer = (state, action) => {
     return { items: updatedItems, totalAmount: updatedTotalAmount };
   }
 
-  if (action.type === "REMOVE_ITEM") {
+  if (action.type === 'REMOVE_ITEM') {
     // prettier-ignore
     const existingCartItemIndex = state.items.findIndex((item) => item.id === action.id);
 
@@ -43,7 +43,7 @@ const cartReducer = (state, action) => {
 
     if (existingItem.amount === 1) {
       // Remove entire item from Cart
-      updatedItems = state.items.filter((item) => item.id !== action.id);
+      updatedItems = state.items.filter(item => item.id !== action.id);
     } else {
       // Leave item in cart, but decrease the amount
       const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
@@ -57,16 +57,16 @@ const cartReducer = (state, action) => {
   return defaultCartState;
 };
 
-const CartProvider = (props) => {
+const CartProvider = props => {
   // prettier-ignore
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
 
-  const addItem = (item) => {
-    dispatchCartAction({ type: "ADD_ITEM", item });
+  const addItem = item => {
+    dispatchCartAction({ type: 'ADD_ITEM', item });
   };
 
-  const removeItem = (id) => {
-    dispatchCartAction({ type: "REMOVE_ITEM", id });
+  const removeItem = id => {
+    dispatchCartAction({ type: 'REMOVE_ITEM', id });
   };
 
   const cartContext = {
