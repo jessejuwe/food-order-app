@@ -1,37 +1,90 @@
+import { useEffect, useState } from 'react';
+
 import Card from '../../UI/Card';
+import Modal from '../../UI/Modal';
 import MealItem from '../MealItem/MealItem';
 import classes from './AvailableMeals.module.css';
 
-const DUMMY_MEALS = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-  },
-  {
-    id: 'm3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-  },
-  {
-    id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-  },
-];
-
 const AvailableMeals = () => {
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsloading] = useState(true);
+  const [httpError, setHTTPError] = useState();
+  const [errorIsShown, setErrorIsShown] = useState(false);
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const response = await fetch(
+        'https://react-food-order-app-b1cb0-default-rtdb.firebaseio.com/meals.json'
+      );
+
+      if (!response.ok) throw new Error('Something went wrong!');
+
+      const data = await response.json();
+
+      const loadedMeals = [];
+
+      // Data Transformation Logic
+      for (const key in data) {
+        loadedMeals.push({
+          id: key,
+          name: data[key].name,
+          description: data[key].description,
+          price: data[key].price,
+        });
+      }
+
+      setMeals(loadedMeals);
+      setIsloading(false);
+    };
+
+    // fetchMeals is an async function that returns a promise
+    // traditional promise-only way of handling an error
+    fetchMeals().catch(error => {
+      setIsloading(false);
+      setHTTPError(`💥 ${error.message} 💥`);
+      setErrorIsShown(true);
+    });
+  }, []);
+
+  // Data Loading Checker
+  if (isLoading) {
+    return (
+      <section className={classes.mealsLoading}>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
+  const hideErrorModalHandler = () => {
+    setErrorIsShown(false);
+  };
+
+  if (errorIsShown) {
+    return (
+      <Modal onCloseCart={hideErrorModalHandler}>
+        <section className={classes.mealsError}>
+          <p>{httpError}</p>
+          <div className={classes.actions}>
+            <button className={classes.button} onClick={hideErrorModalHandler}>
+              Close
+            </button>
+          </div>
+        </section>
+      </Modal>
+    );
+  }
+
+  // Error Checker
+  if (httpError) {
+    return (
+      <section className={classes.mealsError}>
+        <p>{httpError}</p>
+      </section>
+    );
+  }
+
   // helper constant
-  const mealsList = DUMMY_MEALS.map(meal => (
+  const mealsList = meals.map(meal => (
     <MealItem
       id={meal.id}
       key={meal.id}
