@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .meal-item-form {
+    @apply text-right mt-6;
+  }
+
+  .meal-item-form button {
+    @apply font-ubuntu cursor-pointer bg-brown-light outline-none border border-solid border-brown-light text-white py-1 px-8 rounded-3xl font-bold hover:bg-brown-dark hover:border-brown-dark active:bg-brown-accent-dark active:border-brown-accent-dark transition-all w-full;
+  }
+}

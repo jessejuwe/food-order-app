@@ -1,15 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran&family=Oswald&family=Roboto&family=Square+Peg&display=swap');
 
-* {
-  box-sizing: border-box;
+@import './components/Cart/Cart.css';
+@import './components/Cart/CartItem.css';
+@import './components/Cart/Checkout.css';
+
+@import './components/Layout/Header.css';
+@import './components/Layout/HeaderCartButton.css';
+
+@import './components/Meals/AvailableMeals/AvailableMeals.css';
+@import './components/Meals/MealItem/MealItem.css';
+@import './components/Meals/MealItem/MealItemForm.css';
+@import './components/Meals/MealsSummary/MealsSummary.css';
+
+@import './components/UI/Card.css';
+@import './components/UI/Input.css';
+@import './components/UI/Modal.css';
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    --color-sky: 14 165 233;
+    --color-purple: 168 85 247;
+    --color-pink: 236 72 153;
+    --color-emerald: 20 184 166;
+    --color-orange: 249 115 22;
+
+    --color-switch-sky: var(--color-sky);
+    --color-switch-purple: var(--color-purple);
+    --color-switch-pink: var(--color-pink);
+    --color-switch-emerald: var(--color-emerald);
+    --color-switch-orange: var(--color-orange);
+
+    --color-theme-primary: 28 34 55;
+    --color-theme-secondary: 240 9 70;
+
+    --color-primary: var(--color-theme-primary);
+    --color-secondary: var(--color-theme-secondary);
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  html,
+  body {
+    @apply p-0 m-0 font-noto bg-primary;
+  }
 }
-
-html {
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-body {
-  margin: 0;
-  background-color: #3f3f3f;
-}
-

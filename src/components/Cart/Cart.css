@@ -1,0 +1,45 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .cart-items {
+    @apply list-none m-0 p-0 max-h-60 overflow-auto;
+  }
+
+  .total {
+    @apply flex justify-end space-x-4 mr-8 items-center font-bold text-xl md:text-2xl my-4 text-brown-light  tracking-wider;
+  }
+
+  .cart-actions {
+    @apply text-right flex items-center justify-end mr-8 mb-4;
+  }
+
+  .cart-actions button {
+    @apply font-ubuntu font-bold cursor-pointer tracking-widest bg-transparent border-none py-2 px-8 rounded-3xl ml-4 hover:text-primary hover:bg-switch-sky hover:border-switch-sky active:bg-primary active:border-primary active:text-white transition-all;
+  }
+
+  .cart-actions .button--alt {
+    @apply text-primary border border-solid border-primary;
+  }
+
+  .cart-actions .button {
+    @apply bg-primary border-primary text-white;
+  }
+
+  .mealsError {
+    @apply text-center text-error;
+  }
+
+  .prompt {
+    @apply text-2xl text-primary;
+  }
+
+  .success-message {
+    @apply flex items-center justify-center p-4 space-y-4;
+  }
+
+  .order-success {
+    @apply text-xl text-primary uppercase font-oswald animate-bounce;
+  }
+}

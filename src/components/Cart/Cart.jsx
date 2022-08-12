@@ -6,8 +6,6 @@ import Checkout from './Checkout';
 
 import CartContext from '../../context/cart-context';
 
-import classes from './Cart.module.css';
-
 const Cart = props => {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,10 +64,10 @@ const Cart = props => {
   if (errorIsShown) {
     return (
       <Modal onCloseCart={hideErrorModalHandler}>
-        <section className={classes.mealsError}>
-          <p>{httpError}</p>
-          <div className={classes.actions}>
-            <button className={classes.button} onClick={hideErrorModalHandler}>
+        <section className="mealsError">
+          <p className="prompt">{httpError}</p>
+          <div className="cart-actions">
+            <button className="button" onClick={hideErrorModalHandler}>
               Close
             </button>
           </div>
@@ -79,7 +77,7 @@ const Cart = props => {
   }
 
   const cartItems = (
-    <ul className={classes['cart-items']}>
+    <ul className="cart-items">
       {cartCTX.items.map(item => (
         <CartItem
           key={item.id}
@@ -94,12 +92,12 @@ const Cart = props => {
   );
 
   const btnGroup = (
-    <div className={classes.actions}>
-      <button className={classes['button--alt']} onClick={props.onCloseCart}>
+    <div className="cart-actions">
+      <button className="button--alt" onClick={props.onCloseCart}>
         Close
       </button>
       {hasItems && (
-        <button className={classes.button} onClick={orderHandler}>
+        <button className="button" onClick={orderHandler}>
           Order
         </button>
       )}
@@ -109,11 +107,28 @@ const Cart = props => {
   const cartModalContent = (
     <Fragment>
       {cartItems}
-      <div className={classes.total}>
-        <span>Total Amount</span>
+      <div className="total">
+        <span>Total Amount:</span>
         <span>{formatedAmount}</span>
       </div>
+    </Fragment>
+  );
 
+  const isSubmittingModalContent = <p className="prompt">Sending order...</p>;
+
+  const didSubmitModalContent = (
+    <div className="success-message">
+      <p className="order-success">Order Success!</p>
+      <div className="cart-actions">
+        <button className="button" onClick={props.onCloseCart}>
+          Close
+        </button>
+      </div>
+    </div>
+  );
+
+  const checkoutModalContext = (
+    <Fragment>
       {isCheckingOut && (
         <Checkout onConfirm={submitOrderHandler} onCancel={props.onCloseCart} />
       )}
@@ -122,22 +137,10 @@ const Cart = props => {
     </Fragment>
   );
 
-  const isSubmittingModalContent = <p>Sending order...</p>;
-
-  const didSubmitModalContent = (
-    <Fragment>
-      <p>Order Success!</p>
-      <div className={classes.actions}>
-        <button className={classes.button} onClick={props.onCloseCart}>
-          Close
-        </button>
-      </div>
-    </Fragment>
-  );
-
   return (
     <Modal onCloseCart={props.onCloseCart}>
-      {!isSubmitting && !didSubmit && cartModalContent}
+      {!isSubmitting && !didSubmit && !isCheckingOut && cartModalContent}
+      {!isSubmitting && !didSubmit && checkoutModalContext}
       {isSubmitting && isSubmittingModalContent}
       {!isSubmitting && didSubmit && didSubmitModalContent}
     </Modal>

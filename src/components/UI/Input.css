@@ -1,0 +1,17 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .input {
+    @apply flex items-center my-3 md:w-48;
+  }
+
+  .input label {
+    @apply font-bold mr-3 text-primary tracking-wide;
+  }
+
+  .input input {
+    @apply w-full rounded-xl border border-solid border-[#ccc] pl-2;
+  }
+}

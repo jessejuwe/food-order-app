@@ -1,0 +1,33 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .cart-item {
+    @apply flex justify-between items-center border-b-[2px] border-solid border-brown-light py-4 px-0 my-4 mx-4;
+  }
+
+  .cart-item h2 {
+    @apply text-xl mt-0 mx-0 mb-2 text-primary uppercase tracking-widest font-bold font-oswald;
+  }
+
+  .ci-summary {
+    @apply flex w-40 justify-between items-center font-oswald;
+  }
+
+  .ci-price {
+    @apply font-bold text-brown-light tracking-wider;
+  }
+
+  .ci-amount {
+    @apply font-bold border border-solid border-gray-300 py-1 px-3 rounded-md text-primary;
+  }
+
+  .ci-actions {
+    @apply flex flex-col md:flex-row font-oswald;
+  }
+
+  .ci-actions button {
+    @apply font-bold text-xl text-primary border border-solid border-primary outline-none w-12 text-center rounded-md bg-transparent cursor-pointer ml-4 m-1 hover:border-switch-sky hover:text-white hover:bg-switch-sky active:border-switch-sky active:text-white active:bg-primary transition-all ease-linear;
+  }
+}

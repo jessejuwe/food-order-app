@@ -1,0 +1,25 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .button {
+    @apply py-2 px-4 flex justify-around items-center cursor-pointer font-ubuntu border-none text-white bg-brown-accent-darker sml:py-3 sml:px-12 rounded-3xl font-bold hover:bg-brown-accent-dark active:bg-brown-accent-dark;
+  }
+
+  .icon {
+    @apply w-5 h-5 mr-2;
+  }
+
+  .icon.ping {
+    @apply animate-ping;
+  }
+
+  .badge {
+    @apply bg-brown-accent-lighter py-1 px-4 rounded-3xl ml-4 font-bold hover:bg-brown-accent-light;
+  }
+
+  .bump {
+    @apply animate-bump;
+  }
+}

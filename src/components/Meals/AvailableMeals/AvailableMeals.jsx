@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Card from '../../UI/Card';
 import Modal from '../../UI/Modal';
 import MealItem from '../MealItem/MealItem';
-import classes from './AvailableMeals.module.css';
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -49,23 +48,21 @@ const AvailableMeals = () => {
   // Data Loading Checker
   if (isLoading) {
     return (
-      <section className={classes.mealsLoading}>
+      <section className="mealsLoading">
         <p>Loading...</p>
       </section>
     );
   }
 
-  const hideErrorModalHandler = () => {
-    setErrorIsShown(false);
-  };
+  const hideErrorModalHandler = () => setErrorIsShown(false);
 
   if (errorIsShown) {
     return (
       <Modal onCloseCart={hideErrorModalHandler}>
-        <section className={classes.mealsError}>
+        <section className="mealsError">
           <p>{httpError}</p>
-          <div className={classes.actions}>
-            <button className={classes.button} onClick={hideErrorModalHandler}>
+          <div className="am-actions">
+            <button className="am-button" onClick={hideErrorModalHandler}>
               Close
             </button>
           </div>
@@ -77,7 +74,7 @@ const AvailableMeals = () => {
   // Error Checker
   if (httpError) {
     return (
-      <section className={classes.mealsError}>
+      <section className="mealsError">
         <p>{httpError}</p>
       </section>
     );
@@ -95,7 +92,7 @@ const AvailableMeals = () => {
   ));
 
   return (
-    <section className={classes.meals}>
+    <section className="a-meals">
       <Card>
         <ul>{mealsList}</ul>
       </Card>

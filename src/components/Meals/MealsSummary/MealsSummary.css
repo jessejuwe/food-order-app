@@ -1,0 +1,21 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .meal-summary {
+    @apply p-8  m-auto relative text-center w-[90%] max-w-[45rem] md:max-w-full -mt-40 bg-[#383838] text-white shadow-lg shadow-black/25 rounded-xl;
+  }
+
+  .meal-summary h2 {
+    @apply text-4xl md:text-6xl mt-0 mb-2 font-bold font-mouseMemoirs p-2 md:p-0 text-center text-switch-orange animate-pulse-slow;
+  }
+
+  .meal-summary p {
+    @apply text-xl md:text-2xl p-2 md:ml-4 font-squarePeg text-center tracking-wide;
+  }
+
+  .meal-summary span {
+    @apply text-switch-sky text-2xl;
+  }
+}

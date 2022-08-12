@@ -1,16 +1,15 @@
-import classes from './MealsSummary.module.css';
-
 const MealsSummary = () => {
   return (
-    <section className={classes.summary}>
-      <h2>Delicious Food, Delivered To You</h2>
+    <section className="meal-summary">
+      <h2>Global Cuisines Delivered To You</h2>
       <p>
-        Choose your favorite meal from our broad selection of available meals
-        and enjoy a delicious lunch or dinner at home.
+        Choose your <span>favorite meal</span> from our{' '}
+        <span>broad selection of available meals </span> and enjoy a delicious
+        lunch or dinner at home.
       </p>
       <p>
-        All our meals are cooked with high-quality ingredients, just-in-time and
-        of course by experienced chefs!
+        All our meals are cooked with <span>high-quality ingredients</span>,
+        just-in-time and of course by experienced chefs!
       </p>
     </section>
   );

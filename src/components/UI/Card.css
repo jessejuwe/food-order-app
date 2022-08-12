@@ -1,0 +1,9 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .card {
+    @apply p-4 shadow-lg shadow-black/25 rounded-xl bg-switch-sky;
+  }
+}

@@ -1,0 +1,21 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .meal-item {
+    @apply flex justify-between m-4 pb-4 border-b border-solid border-black/20 font-oswald;
+  }
+
+  .meal-item h3 {
+    @apply text-2xl tracking-wider mt-0 mb-1 mx-0 text-primary font-bold uppercase;
+  }
+
+  .description {
+    @apply italic tracking-wide text-gray-300 text-lg;
+  }
+
+  .price {
+    @apply mt-1 font-bold text-brown text-xl;
+  }
+}

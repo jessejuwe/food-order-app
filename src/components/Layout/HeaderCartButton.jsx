@@ -3,8 +3,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import CartIcon from '../Cart/CartIcon';
 import CartContext from '../../context/cart-context';
 
-import classes from './HeaderCartButton.module.css';
-
 const HeaderCartButton = props => {
   const [btnBump, setBtnBump] = useState(false);
   const cartCTX = useContext(CartContext);
@@ -12,7 +10,7 @@ const HeaderCartButton = props => {
   // prettier-ignore
   const numberOfCartItems = cartCTX.items.reduce((cur, item) => cur + item.amount, 0);
 
-  const btnClasses = `${classes.button} ${btnBump ? classes.bump : ''}`;
+  const btnClasses = `button ${btnBump ? 'bump' : ''}`;
 
   useEffect(() => {
     // Guard Clause
@@ -20,7 +18,7 @@ const HeaderCartButton = props => {
 
     setBtnBump(true);
 
-    const timeout = setTimeout(() => setBtnBump(false), 300);
+    const timeout = setTimeout(() => setBtnBump(false), 500);
 
     // Cleanup function
     return () => clearTimeout(timeout);
@@ -28,11 +26,11 @@ const HeaderCartButton = props => {
 
   return (
     <button className={btnClasses} onClick={props.onClick}>
-      <span className={classes.icon}>
+      <span className={btnBump ? 'icon ping' : 'icon'}>
         <CartIcon />
       </span>
       <span>Your Cart</span>
-      <span className={classes.badge}>{numberOfCartItems}</span>
+      <span className="badge">{numberOfCartItems}</span>
     </button>
   );
 };

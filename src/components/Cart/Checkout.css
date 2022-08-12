@@ -1,0 +1,45 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .checkout-form {
+    @apply my-4 mx-0 h-80 overflow-auto;
+  }
+
+  .control {
+    @apply mb-2 mx-4;
+  }
+
+  .control label {
+    @apply font-oswald font-bold mb-1 block tracking-widest text-base text-primary;
+  }
+
+  .control input {
+    @apply p-1 font-roboto text-sm border border-solid border-[#ccc] rounded w-full tracking-wider;
+  }
+
+  .control p {
+    @apply font-oswald lowercase text-brown-dark;
+  }
+
+  .checkout-actions {
+    @apply flex justify-end space-x-4 mx-4 mt-4;
+  }
+
+  .checkout-actions button {
+    @apply font-ubuntu font-bold text-primary text-base cursor-pointer bg-transparent border-none rounded-3xl py-2 px-8 hover:bg-switch-sky active:text-white active:bg-primary transition-all;
+  }
+
+  .checkout-actions .submit {
+    @apply text-white hover:text-primary border border-solid border-primary bg-primary hover:border-switch-sky hover:bg-switch-sky active:border-primary active:bg-primary transition-all;
+  }
+
+  .invalid label {
+    @apply text-invalid-label;
+  }
+
+  .invalid input {
+    @apply border-invalid-input bg-[#ffeff1];
+  }
+}

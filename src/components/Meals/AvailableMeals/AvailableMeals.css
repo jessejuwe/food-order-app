@@ -1,0 +1,37 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .a-meals {
+    @apply max-w-[60rem] md:max-w-full w-[90%] my-8 mx-auto animate-meals;
+  }
+
+  .mealsLoading {
+    @apply text-center text-white;
+  }
+
+  .mealsError {
+    @apply text-center text-error;
+  }
+
+  .a-meals ul {
+    @apply list-none m-0 p-0;
+  }
+
+  .am-actions {
+    @apply text-right;
+  }
+
+  .am-actions button {
+    @apply cursor-pointer bg-transparent border border-solid border-brown-light py-2 px-8 rounded-3xl ml-4 hover:bg-brown-dark hover:border-brown-dark hover:text-white active:bg-brown-dark active:border-brown-dark active:text-white;
+  }
+
+  .am-actions .button--alt {
+    @apply text-brown-light;
+  }
+
+  .am-actions .am-button {
+    @apply bg-brown-light text-white;
+  }
+}

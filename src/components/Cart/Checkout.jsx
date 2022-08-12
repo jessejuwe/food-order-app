@@ -1,7 +1,5 @@
 import { useRef, useState } from 'react';
 
-import classes from './Checkout.module.css';
-
 // HELPER FUNCTIONS
 const isEmpty = value => value.trim().length === 0;
 const isFiveChars = value => value.trim().length === 6;
@@ -66,20 +64,19 @@ const Checkout = props => {
     cityInputRef.current.value = '';
   };
 
-  //   prettier-ignore
-  const nameClassName = `${classes.control} ${!formInputsValidty.name ? classes.invalid : ''}`;
+  const nameClassName = `control ${!formInputsValidty.name ? 'invalid' : ''}`;
 
   //   prettier-ignore
-  const streetClassName = `${classes.control} ${!formInputsValidty.street ? classes.invalid : ''}`;
+  const streetClassName = `control ${!formInputsValidty.street ? 'invalid' : ''}`;
 
   //   prettier-ignore
-  const pCodeClassName = `${classes.control} ${!formInputsValidty.postalCode ? classes.invalid : ''}`;
+  const pCodeClassName = `control ${!formInputsValidty.postalCode ? 'invalid' : ''}`;
 
   //   prettier-ignore
-  const cityControlClassName = `${classes.control} ${!formInputsValidty.city ? classes.invalid : ''}`;
+  const cityControlClassName = `control ${!formInputsValidty.city ? 'invalid' : ''}`;
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
+    <form className="checkout-form" onSubmit={submitHandler}>
       <div className={nameClassName}>
         <label htmlFor="name">Your Name</label>
         <input type="text" id="name" ref={nameInputRef} />
@@ -104,11 +101,11 @@ const Checkout = props => {
         {!formInputsValidty.city && <p>Enter your city</p>}
       </div>
 
-      <div className={classes.actions}>
+      <div className="checkout-actions">
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
-        <button className={classes.submit}>Confirm</button>
+        <button className="submit">Confirm</button>
       </div>
     </form>
   );
